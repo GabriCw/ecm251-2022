@@ -3,6 +3,6 @@
 
 public class App {
     public static void main(String[] args) throws Exception {
-        System.out.println(Transacoes.gerarQRCode("123","Gabriel",1));
+        Atividade1.run();
     }
 }

@@ -1,17 +1,14 @@
+import java.util.concurrent.ThreadLocalRandom;
 
 //Nome: Gabriel dos Santos Couto
 //RA: 20.00273-4
 public class Transacoes {
-   public static String gerarQRCode(String idConta,String nome, double valor){
-      return(idConta +";" +nome +";" +valor);  
-   }  
-   public static void Pagamento(Conta pagamento, Conta destino, String QRCode){
-    if(valor < saldo){
-        String s = QRCode;
-        String[] dados = s.split(";");
-        transferirDinheiro(dados[3], conta2);
+    public static String gerarQrCode(int idConta, String usuario, double valor){
+        int numeroAleatorio = ThreadLocalRandom.current().nextInt(1000, 10000);
+        return String.format("%d;%s;%.2f;%d", 
+        idConta, 
+        usuario, 
+        valor, 
+        numeroAleatorio);
     }
-    } 
-   
-
 }
