@@ -9,6 +9,7 @@ public class Usuarios {
         this.nome = nome;
         this.senha = senha;
         this.email = email;
+        this.conta = new Conta();
     }
     public String getNome() {
         return nome;
