@@ -8,10 +8,7 @@ public class Carro extends Veiculos{
         super(tipo, idVeiculo);
     }
 
-    @Override
-    public String getIdVeiculo() {
-        return super.getIdVeiculo();
-    }
+
 
     @Override
     public String toString() {

@@ -18,7 +18,7 @@ public class Usuario {
         return veiculo;
     }
 
-    public static double alugarVeiculo(Usuario usuario, Veiculos veiculo){
-        this.usuario = usuario.veiculo(veiculo);
-    }
+    //public static double alugarVeiculo(Usuario usuario, Veiculos veiculo){
+    //    this.usuario = usuario.veiculo(veiculo);
+    //}
 }

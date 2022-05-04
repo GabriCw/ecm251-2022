@@ -17,7 +17,7 @@ public class Veiculos {
         return  String.format("%d", id);
     }
 
-    public static String testar(Usuario usuario){
+    public  String testar(Usuario usuario){
         return usuario.getVeiculo().tipo;
     }
 
