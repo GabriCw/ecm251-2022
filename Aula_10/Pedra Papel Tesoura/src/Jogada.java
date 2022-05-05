@@ -1,17 +1,19 @@
 public class Jogada {
-    private String venco;
+    private final EnumJogadas venco;  //atribui o valor de venco até o final
+    private final EnumJogadas venco2; //atribui o valor de venco até o final
 
-    public Jogada(String venco) {
+    public Jogada(EnumJogadas venco, EnumJogadas venco2) {
         this.venco = venco;
+        this.venco2 = venco2;
     }
     
     public boolean verificarVenceu(Jogada jogada){
-        if(jogada.getTipo().equals(venco))
+        if(jogada.getTipo().equals(venco) || jogada.getTipo().equals(venco2))
             return true;
         return false;
     }
 
-    public String getTipo(){
-        return "Jogada";
+    public EnumJogadas getTipo(){
+        return EnumJogadas.PAPEL;
     }
 }
