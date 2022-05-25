@@ -5,7 +5,7 @@ Plataforma de venda de jogos:
 Ux/Ui padrão:
 - Area do usuário;
      - Seleção de idioma;
-     - Criação de contas/Login;
+     - Criação de contas/Login; (JWT - autenticação)
      - Vizualização/Customização de perfil; 
      - Dados de pagamento do usuário;
      - Perfil para cara jogo com sistema de troféus e inventário;
