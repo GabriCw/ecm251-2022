@@ -22,3 +22,10 @@ class Debito(Cartao):
     
     def realizar_pagamento(self) :
         return True
+
+class Credito(Cartao):
+    def __init__(self, numero, titular, validade, cvv):
+        super().__init__(numero, titular, validade, cvv)
+    
+    def realizar_pagamento(self):
+        return True
