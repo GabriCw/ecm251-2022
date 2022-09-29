@@ -14,11 +14,15 @@ with tab1:
     #FIFA22
     with col1:
         st.text("Fifa 22")
-        st.image(
-            image="assets/fifa22.jpg",
-            width=200
-            )
 
+        try:
+            st.image(
+                image="assets/fifa22.jpg",
+                width=200
+                )
+        except:
+            st.text("Erro:Imagem não disponível")
+            
         st.metric(
             label="Preço:",
             value="R$ 250.00")
@@ -31,11 +35,15 @@ with tab1:
     #FORZA
     with col2:
         st.text("Forza Horizon 5")
-        st.image(
-            image="assets/forza.jpg",
-            width=198
-            )
-        
+
+        try:
+            st.image(
+                image="assets/forza.jpg",
+                width=198
+                )
+        except:
+            st.text("Erro:Imagem não disponível")   
+
         st.metric(
             label="Preço:",
             value="R$ 200.00")
@@ -48,11 +56,15 @@ with tab1:
     #NFL
     with col3:
         st.text("Madden 22")
-        st.image(
-            image="assets/nfl.jpg",
-            width=200
-            )
-        
+
+        try:
+            st.image(
+                image="assets/nfl.jpg",
+                width=200
+                )
+        except:
+            st.text("Erro:Imagem não disponível")
+
         st.metric(
             label="Preço:",
             value="R$ 250.00")
@@ -69,10 +81,14 @@ with tab2:
     #THE LAST OF US
     with col1:
         st.text("The Last of Us 2")
-        st.image(
-            image="assets/thelast.jpg",
-            width=180
-            )
+
+        try:
+            st.image(
+                image="assets/thelast.jpg",
+                width=180
+                )
+        except:
+            st.text("Erro:Imagem não disponível")
         
         st.metric(
             label="Preço:",
@@ -86,10 +102,14 @@ with tab2:
     #TOMB RAIDER
     with col2:
         st.text("Shadow of the Tomb Raider")
-        st.image(
-            image="assets/tomb.jpg",
-            width=200
-            )
+
+        try:
+            st.image(
+                image="assets/tomb.jpg",
+                width=200
+                )
+        except:
+            st.text("Erro:Imagem não disponível")
         
         st.metric(
             label="Preço:",
@@ -103,10 +123,15 @@ with tab2:
     #RED DEAD REDEMPTION
     with col3:
         st.text("Red Dead Redemption II")
-        st.image(
-            image="assets/reddead.jpg",
-            width=195
-            )
+
+        try:
+            st.image(
+                image="assets/reddead.jpg",
+                width=195
+                )
+        except:
+            st.text("Erro:Imagem não disponível")
+
         
         st.metric(
             label="Preço:",
