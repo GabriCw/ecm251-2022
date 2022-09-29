@@ -4,6 +4,10 @@ import streamlit as st
 
 #Rodar usando python -m streamlit run ./src/main.py
 
+#Configuraçã da pagina
+st.set_page_config(page_title="Menu", page_icon="🎮")
+
+#Titulo
 st.title("Jogos")
 tab1, tab2 = st.tabs(["Esportes", "Aventura"])
 
@@ -22,7 +26,7 @@ with tab1:
                 )
         except:
             st.text("Erro:Imagem não disponível")
-            
+
         st.metric(
             label="Preço:",
             value="R$ 250.00")
