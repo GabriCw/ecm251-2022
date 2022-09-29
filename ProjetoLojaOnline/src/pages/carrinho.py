@@ -4,3 +4,4 @@ import streamlit as st
 
 #Titulo
 st.title("Carrinho")
+st.text("Itens em seu carrinho:")
