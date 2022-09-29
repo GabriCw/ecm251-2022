@@ -2,6 +2,8 @@ import streamlit as st
 #NOME: Gabriel dos Santos Couto
 #RA: 20.00273-4
 
+#Rodar usando python -m streamlit run ./src/main.py
+
 st.title("Jogos")
 tab1, tab2 = st.tabs(["Esportes", "Aventura"])
 
