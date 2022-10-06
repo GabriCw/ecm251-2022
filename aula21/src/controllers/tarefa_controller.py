@@ -8,6 +8,7 @@ class TarefaController():
     def criar_nova_tarefa(self, descricao):
         tarefa = Tarefa(descricao)
         self._lista_de_tarefas.append(tarefa)
+        print(f'Tarefa:{self.get_tarefas()}')
     
     def exibir_total_tarefas(self):
         return len(self._lista_de_tarefas)
