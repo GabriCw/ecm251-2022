@@ -1,5 +1,6 @@
 from models.user import User
-
+#NOME: Gabriel dos Santos Couto
+#RA: 20.00273-4
 class UserController():
     def __init__(self) -> None:
 
