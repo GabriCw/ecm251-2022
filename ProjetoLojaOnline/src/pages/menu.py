@@ -2,8 +2,6 @@ import streamlit as st
 #NOME: Gabriel dos Santos Couto
 #RA: 20.00273-4
 
-#Rodar usando python -m streamlit run ./src/main.py
-
 #Configuraçã da pagina
 st.set_page_config(page_title="Menu", page_icon="🎮")
 
