@@ -1,6 +1,23 @@
+from fsspec import Callback
+from sqlalchemy import null
 import streamlit as st
+from models.user import User
+
 #NOME: Gabriel dos Santos Couto
 #RA: 20.00273-4
+
+#Criando os usuários
+users = [
+    User(name="Gabriel", password="3333"),
+    User(name="Couto", password="1234")
+    ]
+
+def check_login(name, password):
+        user_teste = User(name=name, password=password)
+        for user in users:
+            if user.name == user_teste.name and user.password == user_teste.password:
+                return True
+        return False
 
 #Área de Login na sidebar
 st.sidebar.title("Faça seu login para acessar os recursos da loja😁")
@@ -20,11 +37,11 @@ senha = st.sidebar.text_input(
 )
 
 #Login
-confirmar = st.sidebar.button(
-label="Confirmar" 
+confirmar = st.sidebar.checkbox(
+label="Confirmar"
 )
 
-if(confirmar):
+if(confirmar == True and check_login(usuario, senha) == True):
     st.title("Bem Vindo!")
 
     tab1, tab2, tab3 = st.tabs(["Esportes", "Aventura", "Carrinho"])
@@ -168,3 +185,17 @@ if(confirmar):
         #Titulo
         st.title("Carrinho")
         st.text("Itens em seu carrinho:")
+        
+        if(fifa_button):
+            st.text("Fifa 22 - R$: 250.00")
+            st.button(
+                label="Remover"
+            )
+
+        if(forza_button):
+            st.text("Forza horizon 5 - R$: 200.00")
+            st.button(
+                label="Remover"
+            )
+else:
+    st.warning("Insira seu login corretamente e clique na checkbox para validar")
