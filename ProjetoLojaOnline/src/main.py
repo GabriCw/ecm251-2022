@@ -1,23 +1,10 @@
-from fsspec import Callback
-from sqlalchemy import null
+from turtle import onclick
 import streamlit as st
-from models.user import User
+from controllers.user_controller import UserController
+from controllers.product_controller import ProductController
 
 #NOME: Gabriel dos Santos Couto
 #RA: 20.00273-4
-
-#Criando os usuários
-users = [
-    User(name="Gabriel", password="3333"),
-    User(name="Couto", password="1234")
-    ]
-
-def check_login(name, password):
-        user_teste = User(name=name, password=password)
-        for user in users:
-            if user.name == user_teste.name and user.password == user_teste.password:
-                return True
-        return False
 
 #Área de Login na sidebar
 st.sidebar.title("Faça seu login para acessar os recursos da loja😁")
@@ -41,7 +28,7 @@ confirmar = st.sidebar.checkbox(
 label="Confirmar"
 )
 
-if(confirmar == True and check_login(usuario, senha) == True):
+if(confirmar == True and UserController().check_login(usuario, senha) == True):
     st.title("Bem Vindo!")
 
     tab1, tab2, tab3 = st.tabs(["Esportes", "Aventura", "Carrinho"])
@@ -66,7 +53,7 @@ if(confirmar == True and check_login(usuario, senha) == True):
                 label="Preço:",
                 value="R$ 250.00")
             
-            fifa_button = st.button(
+            fifa_button = st.checkbox(
                 label="Adicionar ao carrinho",
                 key=1
             )
@@ -87,7 +74,7 @@ if(confirmar == True and check_login(usuario, senha) == True):
                 label="Preço:",
                 value="R$ 200.00")
 
-            forza_button = st.button(
+            forza_button = st.checkbox(
                 label="Adicionar ao carrinho",
                 key=2
             )
@@ -108,7 +95,7 @@ if(confirmar == True and check_login(usuario, senha) == True):
                 label="Preço:",
                 value="R$ 250.00")
             
-            nfl_button = st.button(
+            nfl_button = st.checkbox(
                 label="Adicionar ao carrinho",
                 key=3
             )
@@ -133,7 +120,7 @@ if(confirmar == True and check_login(usuario, senha) == True):
                 label="Preço:",
                 value="R$ 250.00")
             
-            thelast_button = st.button(
+            thelast_button = st.checkbox(
                 label="Adicionar ao carrinho",
                 key=4
             )
@@ -154,7 +141,7 @@ if(confirmar == True and check_login(usuario, senha) == True):
                 label="Preço:",
                 value="R$ 150.00")
             
-            tomb_button = st.button(
+            tomb_button = st.checkbox(
                 label="Adicionar ao carrinho",
                 key=5
             )
@@ -176,26 +163,36 @@ if(confirmar == True and check_login(usuario, senha) == True):
                 label="Preço:",
                 value="R$ 200.00")
             
-            reddead_button = st.button(
+            reddead_button = st.checkbox(
                 label="Adicionar ao carrinho",
                 key=6
             )
 
     with tab3:
-        #Titulo
+
         st.title("Carrinho")
+        st.warning("Para remover itens do carrinho, basta desclicar a checkbox do item")
         st.text("Itens em seu carrinho:")
         
-        if(fifa_button):
-            st.text("Fifa 22 - R$: 250.00")
-            st.button(
-                label="Remover"
-            )
+        if(fifa_button == True):
+            fifa = ProductController().carrinho("Fifa 22", "250.00")
 
-        if(forza_button):
-            st.text("Forza horizon 5 - R$: 200.00")
-            st.button(
-                label="Remover"
-            )
+        if(forza_button == True):
+            forza = ProductController().carrinho("Forza Horizon 5", "200.00")
+
+        if(nfl_button == True):
+            nfl = ProductController().carrinho("Madden 22", "250.00")
+
+        if(thelast_button == True):
+            thelast = ProductController().carrinho("The Last of Us 2", "250.00")
+
+        if(tomb_button == True):
+            tomb = ProductController().carrinho("Shadow of the Tomb Raider", "150.00")
+        
+        if(reddead_button == True):
+            redead = ProductController().carrinho("Red Dead Redemption II", "200.00")
+
+            
+                
 else:
     st.warning("Insira seu login corretamente e clique na checkbox para validar")

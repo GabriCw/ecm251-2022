@@ -1,4 +1,6 @@
 from models.product import Product
+import streamlit as st
+
 #NOME: Gabriel dos Santos Couto
 #RA: 20.00273-4
 class ProductController():
@@ -16,3 +18,10 @@ class ProductController():
     
     def check_product(self, product):
         return product in self.products
+
+    def carrinho(self, name, price):
+        product_teste = Product(name=name, price=price)
+        for product in self.products:
+            if product.name == product_teste.name and product.price == product_teste.price:
+                return st.write(f'{name} - R$:{price}')
+                
