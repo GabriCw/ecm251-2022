@@ -1,4 +1,3 @@
-from regex import F
 import streamlit as st
 from controllers.user_controller import UserController
 from controllers.product_controller import ProductController
@@ -6,9 +5,10 @@ from controllers.product_controller import ProductController
 #NOME: Gabriel dos Santos Couto
 #RA: 20.00273-4
 
+st.set_page_config(page_title="Loja Online", page_icon="🎮")
 #Área de Login na sidebar
-st.sidebar.title("Faça seu login para acessar os recursos da loja😁")
-st.sidebar.write("Faça o seu Login")
+st.sidebar.title("Faça seu login para acessar os recursos da loja!😁")
+st.sidebar.write("Faça o seu Login.")
 
 #Usuário
 usuario = st.sidebar.text_input(
@@ -31,7 +31,7 @@ label="Confirmar"
 if(confirmar == True and UserController().check_login(usuario, senha) == True):
     st.title("Bem Vindo!")
 
-    tab1, tab2, tab3 = st.tabs(["Esportes", "Aventura", "Carrinho"])
+    tab1, tab2, tab3 = st.tabs(["Esportes🏃‍♂️", "Aventura🐱‍🏍", "Carrinho🛒"])
 
     #Aba para jogos de esportes
     with tab1:
@@ -170,9 +170,8 @@ if(confirmar == True and UserController().check_login(usuario, senha) == True):
 
     with tab3:
 
-        st.title("Carrinho")
-        st.warning("Para remover itens do carrinho, basta desclicar a checkbox do item")
-        st.text("Itens em seu carrinho:")
+        st.warning("Para remover itens do carrinho, basta desmarcar a checkbox do item desejado em sua página.")
+        st.subheader("Itens em seu carrinho:")
         
         if(fifa_button == True):
             fifa = ProductController().carrinho("Fifa 22", "250.00")
@@ -195,4 +194,5 @@ if(confirmar == True and UserController().check_login(usuario, senha) == True):
             
                 
 else:
-    st.warning("Insira seu login corretamente e clique na checkbox para validar")
+    st.warning("Insira seu usuário e senha. Marque a checkbox para validar.")
+    st.warning("Para deslogar, basta desmarcar a checkbox.")
