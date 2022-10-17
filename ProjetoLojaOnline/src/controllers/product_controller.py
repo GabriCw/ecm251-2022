@@ -1,19 +1,33 @@
 from models.product import Product
 import streamlit as st
 
-#NOME: Gabriel dos Santos Couto
-#RA: 20.00273-4
+################################
+#NOME: Gabriel dos Santos Couto#
+#RA: 20.00273-4                #
+################################
 class ProductController():
     def __init__(self) -> None:
 
-        #Carrega dados do produto
+        ##########################
+        #Carrega dados do produto#
+        ##########################
+        
         self.products = [
-            Product(name="Fifa 22", description="EA Sports", price=249.99),
-            Product(name="Forza Horizon 5", description="Playground Games", price=199.99),
-            Product(name="Madden 22", description="EA Sports", price=249.99),
-            Product(name="The Last of Us 2", description="Sony Interactive", price=249.99),
-            Product(name="Shadow of the Tomb Raider", description="Crystal Dynamics", price=149.99),
-            Product(name="Red Dead Redemption II", description="Rockstar", price=199.99)
+            Product(name="Booster Espada e Escudo", description="Contém 6 cards", price=11.99),
+            Product(name="Booster XY", description="Contém 6 cards", price=84.99),
+            Product(name="Booster Origem Perdida", description="(JAP) Contém 5 cards", price=25.99),
+            Product(name="Triple Pack Pokemon Go", description="Contém 3 boosters", price=54.99),
+            Product(name="Quadri Pack Golpe Fusão", description="Contém 3 boosters", price=89.99),
+            Product(name="Booster Black & White", description="(EUA) Contém 10 cards", price=99.99),
+            Product(name="Fichário Azul", description="20 folhas com 9 bolsos", price=129.99),
+            Product(name="Sleeve Básica", description="100 sleeves de proteção", price=49.99),
+            Product(name="Sleeve Charizard", description="65 sleeves de proteção", price=49.99),
+            Product(name="Giratina V-ASTRO Gold", description="Coleção Origem Perdida", price=399.99),
+            Product(name="Samurot V-ASTRO Rainbow", description="Coleção Estrelas Radiantes", price=199.99),
+            Product(name="Mewtwo V", description="Coleção Pokemon Go", price=49.99),
+            Product(name="Pikachu", description="Coleção Sol e Lua", price=7.99),
+            Product(name="Gengar Full Art", description="Coleção Origem Perdida", price=39.99),
+            Product(name="Charizard", description="Coleção Lendária", price=19999.99)
         ]
     
     def check_product(self, product):
