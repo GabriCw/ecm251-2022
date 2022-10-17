@@ -22,8 +22,7 @@ st.sidebar.write("Faça o seu Login.")
 
 usuario = st.sidebar.text_input(
     label="Usuário:",
-    placeholder= "Digite seu usuário",
-    value="Couto"
+    placeholder= "Digite seu usuário"
 )
 
 #######
@@ -33,8 +32,7 @@ usuario = st.sidebar.text_input(
 senha = st.sidebar.text_input(
     label="Senha:",
     placeholder= "Digite sua senha",
-    type="password",
-    value="1234"
+    type="password"
 )
 
 #######
