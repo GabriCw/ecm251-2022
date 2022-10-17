@@ -2,197 +2,532 @@ import streamlit as st
 from controllers.user_controller import UserController
 from controllers.product_controller import ProductController
 
-#NOME: Gabriel dos Santos Couto
-#RA: 20.00273-4
+################################
+#NOME: Gabriel dos Santos Couto#
+#RA: 20.00273-4                #
+################################
 
 st.set_page_config(page_title="Loja Online", page_icon="🎮")
-#Área de Login na sidebar
+
+##########################
+#Área de Login na sidebar#
+##########################
+
 st.sidebar.title("Faça seu login para acessar os recursos da loja!😁")
 st.sidebar.write("Faça o seu Login.")
 
-#Usuário
+#########
+#Usuário#
+#########
+
 usuario = st.sidebar.text_input(
     label="Usuário:",
-    placeholder= "Digite seu usuário"
+    placeholder= "Digite seu usuário",
+    value="Couto"
 )
 
-#Senha
+#######
+#Senha#
+#######
+
 senha = st.sidebar.text_input(
     label="Senha:",
     placeholder= "Digite sua senha",
-    type="password" 
+    type="password",
+    value="1234"
 )
 
-#Login
+#######
+#Login#
+#######
+
 confirmar = st.sidebar.checkbox(
 label="Confirmar"
 )
 
 if(confirmar == True and UserController().check_login(usuario, senha) == True):
-    st.title("Bem Vindo!")
+    st.title("Bem Vindo ao mundo Pokemon!")
 
-    tab1, tab2, tab3 = st.tabs(["Esportes🏃‍♂️", "Aventura🐱‍🏍", "Carrinho🛒"])
+    st.sidebar.success("Usuário Logado!")
+    tab1, tab2, tab3, tab4 = st.tabs(["Boosters", "Cards Avulsos", "Acessórios", "Carrinho 🛒"])
 
-    #Aba para jogos de esportes
+    ###################
+    #Aba para Boosters#
+    ###################
+
     with tab1:
         col1, col2, col3 = st.columns(3)
 
-        #FIFA22
+        
         with col1:
-            st.text("Fifa 22")
+
+            #################
+            #ESPADA E ESCUDO#
+            #################
+
+            st.text(ProductController().get_nome("Booster Espada e Escudo"))
 
             try:
                 st.image(
-                    image="assets/fifa22.jpg",
+                    image="assets/EspadaEscudo.jpg",
                     width=200
                     )
             except:
                 st.text("Erro:Imagem não disponível")
 
             st.metric(
-                label="Preço:",
-                value="R$ 250.00")
+                label="Preço (R$):",
+                value=ProductController().get_price("Booster Espada e Escudo"))
             
-            fifa_button = st.checkbox(
+            EE_button = st.checkbox(
                 label="Adicionar ao carrinho",
                 key=1
             )
-        
-        #FORZA
-        with col2:
-            st.text("Forza Horizon 5")
+
+            #############
+            #TRIPLE PACK#
+            #############
+
+            st.text(ProductController().get_nome("Triple Pack Pokemon Go"))
 
             try:
                 st.image(
-                    image="assets/forza.jpg",
-                    width=198
+                    image="assets/TriplePack.jpg",
+                    width=200
+                    )
+            except:
+                st.text("Erro:Imagem não disponível")
+
+            st.metric(
+                label="Preço (R$):",
+                value=ProductController().get_price("Triple Pack Pokemon Go"))
+            
+            TP_button = st.checkbox(
+                label="Adicionar ao carrinho",
+                key=2
+            )
+        
+        with col2:
+
+            ####
+            #XY#
+            ####
+
+            st.text(ProductController().get_nome("Booster XY"))
+
+            try:
+                st.image(
+                    image="assets/XY.jpg",
+                    width=200
                     )
             except:
                 st.text("Erro:Imagem não disponível")   
 
             st.metric(
-                label="Preço:",
-                value="R$ 200.00")
+                label="Preço (R$):",
+                value=ProductController().get_price("Booster XY"))
 
-            forza_button = st.checkbox(
+            XY_button = st.checkbox(
                 label="Adicionar ao carrinho",
-                key=2
+                key=3
             )
 
-        #NFL
-        with col3:
-            st.text("Madden 22")
+            #############
+            #QUADRI PACK#
+            #############
+
+            st.text(ProductController().get_nome("Quadri Pack Golpe Fusão"))
 
             try:
                 st.image(
-                    image="assets/nfl.jpg",
+                    image="assets/QuadriPack.jpg",
+                    width=200
+                    )
+            except:
+                st.text("Erro:Imagem não disponível")   
+
+            st.metric(
+                label="Preço (R$):",
+                value=ProductController().get_price("Quadri Pack Golpe Fusão"))
+
+            QP_button = st.checkbox(
+                label="Adicionar ao carrinho",
+                key=4
+            )
+
+        with col3:
+
+            ################
+            #ORIGEM PERDIDA#
+            ################
+
+            st.text(ProductController().get_nome("Booster Origem Perdida"))
+
+            try:
+                st.image(
+                    image="assets/OrigemPerdida.jpg",
                     width=200
                     )
             except:
                 st.text("Erro:Imagem não disponível")
 
             st.metric(
-                label="Preço:",
-                value="R$ 250.00")
+                label="Preço (R$):",
+                value=ProductController().get_price("Booster Origem Perdida"))
             
-            nfl_button = st.checkbox(
+            OP_button = st.checkbox(
                 label="Adicionar ao carrinho",
-                key=3
+                key=5
             )
+            ###############
+            #BLACK & WHITE#
+            ###############
 
-    #Aba para jogos de Aventura
-    with tab2:
-        col1, col2, col3 = st.columns(3)
-
-        #THE LAST OF US
-        with col1:
-            st.text("The Last of Us 2")
+            st.text(ProductController().get_nome("Booster Black & White"))
 
             try:
                 st.image(
-                    image="assets/thelast.jpg",
+                    image="assets/BlackWhite.jpg",
+                    width=200
+                    )
+            except:
+                st.text("Erro:Imagem não disponível")
+
+            st.metric(
+                label="Preço (R$):",
+                value=ProductController().get_price("Booster Black & White"))
+            
+            BW_button = st.checkbox(
+                label="Adicionar ao carrinho",
+                key=6
+            )
+
+    #########################
+    #Aba para Cartas avulsas#
+    #########################
+
+    with tab2:
+        col1, col2, col3 = st.columns(3)
+
+        with col1:
+
+            #######################
+            #Giratina V-ASTRO GOLD# 
+            #######################
+
+            st.text(ProductController().get_nome("Giratina V-ASTRO Gold"))
+
+            try:
+                st.image(
+                    image="assets/giratina.jpg",
+                    width=200
+                    )
+            except:
+                st.text("Erro:Imagem não disponível")
+            
+            st.metric(
+                label="Preço (R$):",
+                value=ProductController().get_price("Giratina V-ASTRO Gold"))
+            
+            GG_button = st.checkbox(
+                label="Adicionar ao carrinho",
+                key=7
+            )
+
+            #########
+            #Pikachu#
+            #########
+            st.text(ProductController().get_nome("Pikachu"))
+
+            try:
+                st.image(
+                    image="assets/pikachu.jpg",
+                    width=200
+                    )
+            except:
+                st.text("Erro:Imagem não disponível")
+            
+            st.metric(
+                label="Preço (R$):",
+                value=ProductController().get_price("Pikachu"))
+            
+            PK_button = st.checkbox(
+                label="Adicionar ao carrinho",
+                key=8
+            )
+
+        with col2:
+
+            #########################
+            #Samurot V-ASTRO RAINBOW#
+            #########################
+
+            st.text(ProductController().get_nome("Samurot V-ASTRO Rainbow"))
+
+            try:
+                st.image(
+                    image="assets/samurott.jpg",
+                    width=200
+                    )
+            except:
+                st.text("Erro:Imagem não disponível")
+            
+            st.metric(
+                label="Preço (R$):",
+                value=ProductController().get_price("Samurot V-ASTRO Rainbow"))
+            
+            SR_button = st.checkbox(
+                label="Adicionar ao carrinho",
+                key=9
+            )
+
+            #################
+            #Gengar Full Art# 
+            #################
+            st.text(ProductController().get_nome("Gengar Full Art"))
+
+            try:
+                st.image(
+                    image="assets/gengar.jpg",
+                    width=200
+                    )
+            except:
+                st.text("Erro:Imagem não disponível")
+            
+            st.metric(
+                label="Preço (R$):",
+                value=ProductController().get_price("Gengar Full Art"))
+            
+            GF_button = st.checkbox(
+                label="Adicionar ao carrinho",
+                key=10
+            )
+
+        with col3:
+
+            ##########
+            #Mewtwo V#
+            ##########
+
+            st.text(ProductController().get_nome("Mewtwo V"))
+
+            try:
+                st.image(
+                    image="assets/mewtwo.jpg",
+                    width=200
+                    )
+            except:
+                st.text("Erro:Imagem não disponível")
+
+            st.metric(
+                label="Preço (R$):",
+                value=ProductController().get_price("Mewtwo V"))
+            
+            MV_button = st.checkbox(
+                label="Adicionar ao carrinho",
+                key=11
+            )
+
+            ###########
+            #Charizard#
+            ###########
+
+            st.text(ProductController().get_nome("Charizard"))
+
+            try:
+                st.image(
+                    image="assets/charizard.png",
+                    width=200
+                    )
+            except:
+                st.text("Erro:Imagem não disponível")
+
+            
+            st.metric(
+                label="Preço (R$):",
+                value=ProductController().get_price("Charizard"))
+            
+            CH_button = st.checkbox(
+                label="Adicionar ao carrinho",
+                key=12
+            )
+
+    #####################
+    #Aba para Acessórios#
+    #####################
+
+    with tab3:
+        col1, col2, col3 = st.columns(3)
+
+        ###############
+        #FICHÁRIO AZUL#
+        ###############
+
+        with col1:
+            st.text(ProductController().get_nome("Fichário Azul"))
+
+            try:
+                st.image(
+                    image="assets/FicharioAzul.jpg",
                     width=180
                     )
             except:
                 st.text("Erro:Imagem não disponível")
             
             st.metric(
-                label="Preço:",
-                value="R$ 250.00")
+                label="Preço (R$):",
+                value=ProductController().get_price("Fichário Azul"))
             
-            thelast_button = st.checkbox(
+            FA_button = st.checkbox(
                 label="Adicionar ao carrinho",
-                key=4
+                key=13
             )
         
-        #TOMB RAIDER
+        ########
+        #SLEEVE#
+        ########
+
         with col2:
-            st.text("Shadow of the Tomb Raider")
+            st.text(ProductController().get_nome("Sleeve Básica"))
 
             try:
                 st.image(
-                    image="assets/tomb.jpg",
-                    width=200
+                    image="assets/SleeveBasica.jpg",
+                    width=180
                     )
             except:
                 st.text("Erro:Imagem não disponível")
             
             st.metric(
-                label="Preço:",
-                value="R$ 150.00")
+                label="Preço (R$):",
+                value=ProductController().get_price("Sleeve Básica"))
             
-            tomb_button = st.checkbox(
+            SB_button = st.checkbox(
                 label="Adicionar ao carrinho",
-                key=5
+                key=14
             )
-        
-        #RED DEAD REDEMPTION
         with col3:
-            st.text("Red Dead Redemption II")
+
+            ##################
+            #SLEEVE CHARIZARD#
+            ##################
+
+            st.text(ProductController().get_nome("Sleeve Charizard"))
 
             try:
                 st.image(
-                    image="assets/reddead.jpg",
-                    width=195
+                    image="assets/SleevePersonalizada.jpg",
+                    width=180
                     )
             except:
                 st.text("Erro:Imagem não disponível")
-
             
             st.metric(
-                label="Preço:",
-                value="R$ 200.00")
+                label="Preço (R$):",
+                value=ProductController().get_price("Sleeve Charizard"))
             
-            reddead_button = st.checkbox(
+            SC_button = st.checkbox(
                 label="Adicionar ao carrinho",
-                key=6
+                key=15
             )
 
-    with tab3:
+    ####################
+    #Página de Carrinho#
+    ####################
+
+    with tab4:
 
         st.warning("Para remover itens do carrinho, basta desmarcar a checkbox do item desejado em sua página.")
-        st.subheader("Itens em seu carrinho:")
-        
-        if(fifa_button == True):
-            fifa = ProductController().carrinho("Fifa 22", "250.00")
 
-        if(forza_button == True):
-            forza = ProductController().carrinho("Forza Horizon 5", "200.00")
+        col1, col2 = st.columns(2)
 
-        if(nfl_button == True):
-            nfl = ProductController().carrinho("Madden 22", "250.00")
+        with col1:
 
-        if(thelast_button == True):
-            thelast = ProductController().carrinho("The Last of Us 2", "250.00")
+            st.subheader("Itens em seu carrinho:")
 
-        if(tomb_button == True):
-            tomb = ProductController().carrinho("Shadow of the Tomb Raider", "150.00")
-        
-        if(reddead_button == True):
-            redead = ProductController().carrinho("Red Dead Redemption II", "200.00")
+            valor_total = 0
 
+            if(EE_button == True):
+                EE = ProductController().carrinho("Booster Espada e Escudo")
+                valor_total += ProductController().get_price("Booster Espada e Escudo")
+
+            if(XY_button == True):
+                XY = ProductController().carrinho("Booster XY")
+                valor_total += ProductController().get_price("Booster XY")
+
+            if(OP_button == True):
+                OP = ProductController().carrinho("Booster Origem Perdida")
+                valor_total += ProductController().get_price("Booster Origem Perdida")
+
+            if(TP_button == True):
+                TP = ProductController().carrinho("Triple Pack Pokemong Go")
+                valor_total += ProductController().get_price("Triple Pack Pokemong Go")
+
+            if(QP_button == True):
+                QP = ProductController().carrinho("Quadri Pack Golpe Fusão")
+                valor_total += ProductController().get_price("Quadri Pack Golpe Fusão")
+
+            if(BW_button == True):
+                BW = ProductController().carrinho("Booster Black & White")
+                valor_total += ProductController().get_price("Booster Black & White")
             
-                
-else:
+            if(GG_button == True):
+                GG = ProductController().carrinho("Giratina V-ASTRO Gold")
+                valor_total += ProductController().get_price("Giratina V-ASTRO Gold")
+            
+            if(PK_button == True):
+                PK = ProductController().carrinho("Pikachu")
+                valor_total += ProductController().get_price("Pikachu")
+            
+            if(SR_button == True):
+                SR = ProductController().carrinho("Samurot V-ASTRO Rainbow")
+                valor_total += ProductController().get_price("Samurot V-ASTRO Rainbow")
+            
+            if(GF_button == True):
+                GF = ProductController().carrinho("Gengar Full Art")
+                valor_total += ProductController().get_price("Gengar Full Art")
+            
+            if(MV_button == True):
+                MV = ProductController().carrinho("Mewtwo V")
+                valor_total += ProductController().get_price("Mewtwo V")
+            
+            if(CH_button == True):
+                CH = ProductController().carrinho("Charizard")
+                valor_total += ProductController().get_price("Charizard")
+
+            if(FA_button == True):
+                FA = ProductController().carrinho("Fichário Azul")
+                valor_total += ProductController().get_price("Fichário Azul")
+            
+            if(SB_button == True):
+                SB = ProductController().carrinho("Sleeve Básica")
+                valor_total += ProductController().get_price("Sleeve Básica")
+
+            if(SC_button == True):
+                SC = ProductController().carrinho("Sleeve Charizard")
+                valor_total += ProductController().get_price("Sleeve Charizard")
+            
+        with col2:
+
+            #########################
+            #Pagamento - Preço total#
+            #########################
+            st.metric("Valor Total (R$):", round((valor_total),2)) 
+            st.button(label="Fazer Pagamento")
+
+###############
+#Erro de login# 
+###############
+           
+elif(confirmar == True and UserController().check_login(usuario, senha) == False):
+    st.sidebar.error("Login incorreto, tente novamente.")
+    st.warning("Insira seu usuário e senha. Marque a checkbox para validar.")
+    st.warning("Para deslogar, basta desmarcar a checkbox.")
+
+#################
+#Mensagem Padrão#
+#################
+
+else:       
     st.warning("Insira seu usuário e senha. Marque a checkbox para validar.")
     st.warning("Para deslogar, basta desmarcar a checkbox.")
