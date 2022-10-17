@@ -458,8 +458,8 @@ if(confirmar == True and UserController().check_login(usuario, senha) == True):
                 valor_total += ProductController().get_price("Booster Origem Perdida")
 
             if(TP_button == True):
-                TP = ProductController().carrinho("Triple Pack Pokemong Go")
-                valor_total += ProductController().get_price("Triple Pack Pokemong Go")
+                TP = ProductController().carrinho("Triple Pack Pokemon Go")
+                valor_total += ProductController().get_price("Triple Pack Pokemon Go")
 
             if(QP_button == True):
                 QP = ProductController().carrinho("Quadri Pack Golpe Fusão")
