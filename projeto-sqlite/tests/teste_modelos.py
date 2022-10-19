@@ -11,4 +11,4 @@ print(pedido1)
 print(pedido2)
 
 print(item1)
-print(item2)   
+print(item2) 
