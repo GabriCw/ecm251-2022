@@ -1,6 +1,6 @@
 import sqlite3
-from src.models.item import Item
-class ItemDAO:
+from src.models.pedido import Pedido
+class PedidoDAO:
     
     _instance = None
 
@@ -10,7 +10,7 @@ class ItemDAO:
     @classmethod
     def get_instance(cls):
         if cls._instance == None:
-            cls._instance = ItemDAO()
+            cls._instance = PedidoDAO()
         return cls._instance
 
     def _connect(self):
@@ -19,18 +19,19 @@ class ItemDAO:
     def get_all(self):
         self.cursor = self.conn.cursor()
         self.cursor.execute("""
-            SELECT * FROM Itens;
+            SELECT * FROM Pedidos;
         """)
         resultados = []
         for resultado in self.cursor.fetchall():
-            resultados.append(Item(id=resultado[0], nome=resultado[1], preco=resultado[2]))
+            resultados.append(Pedido(id=resultado[0], id_item=resultado[1], id_cliente=resultado[2], quantidade=resultado[3],
+            numero_pedido=resultado[4], data_hora=resultado[5]))
         self.cursor.close()
         return resultados
     
     def inserir_item(self, item):
         self.cursor = self.conn.cursor()
         self.cursor.execute("""
-            INSERT INTO Itens (id, nome, preco)
+            INSERT INTO Pedidos (id, nome, preco)
             VALUES(?,?,?);
         """, (item.id, item.nome, item.preco))
         self.conn.commit()
@@ -39,7 +40,7 @@ class ItemDAO:
     def pegar_item(self, id):
         self.cursor = self.conn.cursor()
         self.cursor.execute(f"""
-            SELECT * FROM Itens
+            SELECT * FROM Pedidos
             WHERE id = '{id}';
         """)
         item = None
@@ -53,7 +54,7 @@ class ItemDAO:
         try:
             self.cursor = self.conn.cursor()
             self.cursor.execute(f"""
-                UPDATE Itens SET
+                UPDATE Pedidos SET
                 nome = '{item.nome}',
                 preco = {item.preco}
                 WHERE id = '{item.id}'
