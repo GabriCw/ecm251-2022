@@ -1,4 +1,3 @@
-from tkinter.font import BOLD
 from src.models.item import Item
 from src.dao.item_dao import ItemDAO
 class ItemController:
