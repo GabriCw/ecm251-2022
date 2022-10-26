@@ -43,18 +43,18 @@ class PedidoDAO:
         self.conn.commit()
         self.cursor.close()
 
-    def pegar_item(self, id):
+    def pegar_pedido(self, numero_pedido):
         self.cursor = self.conn.cursor()
         self.cursor.execute(f"""
             SELECT * FROM Pedidos
-            WHERE id = '{id}';
+            WHERE numero_pedido = '{numero_pedido}';
         """)
-        item = None
-        resultado = self.cursor.fetchone()
-        if resultado != None:
-            item = Item(id=resultado[0], nome=resultado[1], preco=resultado[2])
+        resultados = []
+        for resultado in self.cursor.fetchall():
+            resultados.append(Pedido(id=resultado[0], id_item=resultado[1], id_cliente=resultado[2], quantidade=resultado[3],
+            numero_pedido=resultado[4], data_hora=resultado[5]))
         self.cursor.close()
-        return item
+        return resultados
     
     def atualizar_item(self, item):
         try:
