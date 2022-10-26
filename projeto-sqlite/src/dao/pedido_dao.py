@@ -56,14 +56,15 @@ class PedidoDAO:
         self.cursor.close()
         return resultados
     
-    def atualizar_item(self, item):
+    def atualizar_pedido(self, pedido):
         try:
             self.cursor = self.conn.cursor()
             self.cursor.execute(f"""
                 UPDATE Pedidos SET
-                nome = '{item.nome}',
-                preco = {item.preco}
-                WHERE id = '{item.id}'
+                id_item = '{pedido.id_item}',
+                quantidade = {pedido.quantidade},
+                data_hora = '{pedido.data_hora}'
+                WHERE id = {pedido.id}
             """)
             self.conn.commit()
             self.cursor.close()
@@ -83,15 +84,3 @@ class PedidoDAO:
         except:
             return False
         return True
-    
-    def search_all_for_name(self, nome):
-        self.cursor = self.conn.cursor()
-        self.cursor.execute(f"""
-            SELECT * FROM Itens
-            WHERE nome LIKE '{nome}%'; # % indica que procure nomes que comecem com oq escreveu e tenha mais coisa dps
-        """)
-        resultados = []
-        for resultado in self.cursor.fetchall():
-            resultados.append(Item(id=resultado[0], nome=resultado[1], preco=resultado[2]))
-        self.cursor.close()
-        return resultados
