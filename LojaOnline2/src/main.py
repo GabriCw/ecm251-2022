@@ -12,7 +12,7 @@ from src.controllers.cart_controller import CartController
 
 p_controller = ProductController()
 
-st.set_page_config(page_title="Projeto Loja Online T3 Luis Guilherme", page_icon="assets/batman.png")
+st.set_page_config(page_title="Liga Pokemon", page_icon="assets/ligapokemon.png")
 
 with open("src/style.css") as f:
     st.markdown(f"<style>{f.read()}</style>",unsafe_allow_html= True)
@@ -33,17 +33,21 @@ with st.sidebar:
         st.text("")
         st.text("")
 
-        st.title("Login")
+        st.title("Faça seu Login 😁")
 
         st.markdown("***")
 
         email = st.text_input(
             label="Email",
+            placeholder= "Digite seu email",
+            value="couto@gmail.com"
         )
 
         password = st.text_input(
             label="Senha",
-                type = "password"
+            placeholder= "Digite sua senha",
+            type = "password",
+            value="1234"
         )
         
         st.text("")
@@ -52,12 +56,12 @@ with st.sidebar:
         with col1:
             st.button(label= "Entrar", on_click= UserController.check_login, args = (UserController(),email,password))
         with col2:
-            st.button(label = "Novo registro", on_click = UserController.sign_up_screen)
+            st.button(label = "Registrar-se", on_click = UserController.sign_up_screen)
     
     if st.session_state['Login'] == 'errado':
 
         st.markdown("***")
-        st.markdown("# Email ou senha incorreto!")
+        st.markdown("# Email ou senha incorretos!")
         
     if st.session_state["Login"] == "registro":
         st.text("")
@@ -68,7 +72,7 @@ with st.sidebar:
         st.markdown("***")
 
         name = st.text_input(
-            label="Name",
+            label="Nome",
                 key = 1,
         )
 
@@ -109,32 +113,21 @@ if "Login" in st.session_state:
 
     # st.markdown("#### Login " + st.session_state["Login"])
     if st.session_state["Login"] == "aprovado":
-        tab1, tab2, tab3, tab4 = st.tabs(["Perfil", "Home", "Carrinho", "Cadastrar Produto"])
+        tab1, tab2, tab3, tab4, tab5 = st.tabs(["Perfil", "Home", "Carrinho", "Cadastrar Produto", "Editar Produto"])
 
         with tab1: 
 
             st.title("Perfil")
-
-            st.markdown("***")
-            st.text("")
-            col1,col2 = st.columns(2)
-
-            with col1:
-
-                st.markdown("#")
-                st.image("https://i.pinimg.com/736x/ea/8b/c0/ea8bc0fd9e2bf37e9ad09f056ff6ebc6.jpg")
-                
-            with col2:
-
-                if st.session_state["Profile"] == "dados":
-                    st.markdown("***")
-                    st.markdown(f"### Nome: {st.session_state['Usuario']}")
-                    st.markdown("***")
-                    st.markdown(f"### Email: {st.session_state['Email']}")
-                    st.markdown("***")
-                    st.markdown(f"### CPF: {st.session_state['Cpf']}")
-                    st.markdown("***")
-                    st.button("Mudar informações de login", key = 7852084, on_click = UserController.change_login_data)
+            
+            if st.session_state["Profile"] == "dados":
+                st.markdown("***")
+                st.markdown(f"### Nome: {st.session_state['Usuario']}")
+                st.markdown("***")
+                st.markdown(f"### Email: {st.session_state['Email']}")
+                st.markdown("***")
+                st.markdown(f"### CPF: {st.session_state['Cpf']}")
+                st.markdown("***")
+                st.button("Mudar informações de login", key = 7852084, on_click = UserController.change_login_data)
 
             if st.session_state["Profile"] == "change":
                 email = st.text_input(
@@ -272,10 +265,29 @@ if "Login" in st.session_state:
                     key = 193,
             )
 
-            
-
-            
             st.text("")
             st.button(label= "Cadastrar produto", on_click= ProductController.sign_product, args = (ProductController(), name1, price1, url1, amount1))
+            
+            st.markdown("### " + st.session_state["carrinho"])
+
+        with tab5:
+            st.text("")
+            st.text("")
+
+            st.title("Editar Produtos")
+
+            st.markdown("***")
+
+            name2 = st.text_input(
+                label= "Name",
+                    key = 194,
+            )
+
+            amount2 = st.number_input(
+                label = "Quantidade",
+                    key = 195,
+            )
+            st.text("")
+            st.button(label= "Editar produto", on_click= ProductController.update_product, args = (ProductController(), name2, amount2))
             
             st.markdown("### " + st.session_state["carrinho"])

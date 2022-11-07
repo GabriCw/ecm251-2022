@@ -16,7 +16,7 @@
     display: flex;
     flex: 1 1 0%;
     flex-direction: column;
-    background-color: #77878B;
+    background-color: #5e6e59;
     gap: 1rem;
     border-radius: 3px;
 }
@@ -28,7 +28,7 @@
 
 .st-br{
     color: #B7D5D4;
-    background-color: #488286;
+    background-color: #864848;
 }
 
 .st-bq{
@@ -206,7 +206,7 @@
     left: 0px;
     right: 0px;
     height: 2.875rem;
-    background-color: #373E40; 
+    background-color: #fb0e0e; 
     outline: none;
     z-index: 999990;
     display: block;

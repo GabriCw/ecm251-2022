@@ -20,13 +20,24 @@ class ProductController:
 
     def sign_product(self, name, price, url, amount):
         product = Product(name, price, url, amount)
-        
+
         teste = ProductDAO.get_instance().inserir_product(product)
         if teste == False:
             st.session_state["carrinho"] = "Falha ao Cadastrar"
             print(teste)
         else:
             st.session_state["carrinho"] = "Produto Cadastrado Com Sucesso"
+            st.session_state["Login"] = "negado"
+            time.sleep(0.2)
+            st.session_state["Login"] = "aprovado"
+    
+    def update_product(self, name, amount):
+        teste2 = ProductDAO.get_instance().atualizar_product(name, amount)
+        if teste2 == False:
+            st.session_state["carrinho"] = "Falha ao Editar"
+            print(teste2)
+        else:
+            st.session_state["carrinho"] = "Produto Editado Com Sucesso"
             st.session_state["Login"] = "negado"
             time.sleep(0.2)
             st.session_state["Login"] = "aprovado"

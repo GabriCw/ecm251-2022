@@ -53,7 +53,7 @@ class UserController():
         user = User(st.session_state['Usuario'], email, password, st.session_state['Cpf'])
         try:
             UserDAO.get_instance().atualizar_user(user)
-            st.markdown("### Alterações Sucesso")
+            st.markdown("### Alterado com Sucesso")
         except:
             st.markdown("### Email já registrado")
     

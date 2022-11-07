@@ -50,11 +50,11 @@ class ProductDAO:
             return False
         return True
 
-    def pegar_product(self, email):
+    def pegar_product(self, name):
         self.cursor = self.conn.cursor()
         self.cursor.execute(f"""
             SELECT * FROM Products
-            WHERE email = '{email}';
+            WHERE name = '{name}';
         """)
         product  = None
         resultado = self.cursor.fetchone()
@@ -63,13 +63,13 @@ class ProductDAO:
         self.cursor.close()
         return product
 
-    def atualizar_product(self, product):
+    def atualizar_product(self, name, amount):
         try:
             self.cursor = self.conn.cursor()
             self.cursor.execute(f"""
                 UPDATE Products SET
-                amount = {product.get_amount()}
-                WHERE name = '{product.get_name()}'
+                amount = {amount}
+                WHERE name = '{name}'
             """)
             self.conn.commit()
             self.cursor.close()
