@@ -33,7 +33,7 @@ with st.sidebar:
         st.text("")
         st.text("")
 
-        st.title("Faça seu Login 😁")
+        st.title("Faça seu Login 😁!")
 
         st.markdown("***")
 
@@ -73,23 +73,27 @@ with st.sidebar:
 
         name = st.text_input(
             label="Nome",
-                key = 1,
+            key = 1,
+            placeholder= "Digite seu nome"
         )
 
         email = st.text_input(
             label="Email",
-                key = 2,
+            key = 2,
+            placeholder= "Digite seu email"
         )
 
         password = st.text_input(
             label="Senha",
-                type = "password",
-                    key = 3,
+            type = "password",
+            key = 3,
+            placeholder= "Digite sua senha"
         )
 
         cpf = st.text_input(
             label="CPF",
-                key = 4,
+            key = 4,
+            placeholder= "Digite seu cpf"
         )
 
         col1, col2 = st.columns(2)
@@ -111,9 +115,8 @@ with st.sidebar:
 
 if "Login" in st.session_state:
 
-    # st.markdown("#### Login " + st.session_state["Login"])
     if st.session_state["Login"] == "aprovado":
-        tab1, tab2, tab3, tab4, tab5 = st.tabs(["Perfil", "Home", "Carrinho", "Cadastrar Produto", "Editar Produto"])
+        tab1, tab2, tab3, tab4, tab5 = st.tabs(["🙍‍♂️ | Perfil", "🈹 | Home", "🛒 | Carrinho", "💬 | Cadastrar Produto", "➕ | Alterar Estoque"])
 
         with tab1: 
 
@@ -132,15 +135,17 @@ if "Login" in st.session_state:
             if st.session_state["Profile"] == "change":
                 email = st.text_input(
                     label="Novo Email",
-                        key = 82700,
+                    key = 82700,
                 )
 
                 password = st.text_input(
                     label="Nova Senha",
-                        type = "password",
-                            key = 56240,
+                    type = "password",
+                    key = 56240,
                 )
+
                 col3, col4 = st.columns(2)
+
                 with col3:
                     st.button(label = "Voltar", key = 99785, on_click = UserController.go_back)
                 
@@ -164,7 +169,7 @@ if "Login" in st.session_state:
                     c = st.container()
                     c.markdown(f"## {product.get_name()}")
                     try:
-                        c.image(f"{product.get_url()}")
+                        c.image(f"{product.get_url()}", width=200)
                     except:
                         c.image("https://www.thesslstore.com/blog/wp-content/uploads/2018/10/bigstock-Error-Browser-Vector-Icon-Fil-242176321-e1540917868244-300x300.jpg")
                     c.markdown(f"## R${product.get_price()}")
@@ -172,14 +177,14 @@ if "Login" in st.session_state:
                     if product.get_amount() > 0 and product.get_amount() - quantity1 >= 0:
                         c.button(label = f"Adicionar {product.get_name()}", key = 200 * (i+12), on_click= st.session_state["Cart"].add_product, args = (product, quantity1))
                     else:
-                        c.markdown(f"## {product.get_name()} em falta")
+                        c.markdown("## Produto indisponivel")
                 with col2:
 
                     product = p_controller.get_product(index = i + 1)
                     c = st.container()
                     c.markdown(f"## {product.get_name()}")
                     try:
-                        c.image(f"{product.get_url()}")
+                        c.image(f"{product.get_url()}",width=200)
                     except:
                         c.image("https://www.thesslstore.com/blog/wp-content/uploads/2018/10/bigstock-Error-Browser-Vector-Icon-Fil-242176321-e1540917868244-300x300.jpg")
                     c.markdown(f"## R${product.get_price()}")
@@ -187,7 +192,7 @@ if "Login" in st.session_state:
                     if product.get_amount() > 0 and product.get_amount() - quantity2 >= 0:    
                         c.button(label = f"Adicionar {product.get_name()}", key = 400 * (i+99), on_click= st.session_state["Cart"].add_product, args = (product, quantity2))
                     else:
-                        c.markdown(f"## {product.get_name()} em falta")
+                        c.markdown("## Produto indisponivel")
 
         with tab3:
 
@@ -241,28 +246,28 @@ if "Login" in st.session_state:
             st.text("")
             st.text("")
 
-            st.title("Cadastro De Produtos")
+            st.title("Cadastrar Produtos")
 
             st.markdown("***")
             
             name1 = st.text_input(
-                label= "Name",
-                    key = 190,
+                label= "Nome",
+                key = 190
             )
 
             price1 = st.number_input(
                 label="Preço",
-                    key = 191,
+                key = 191
             )
 
             url1 = st.text_input(
                 label="URL Da Imagem",
-                    key = 192,
+                key = 192
             )
 
             amount1 = st.number_input(
                 label = "Quantidade",
-                    key = 193,
+                key = 193
             )
 
             st.text("")
