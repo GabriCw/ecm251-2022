@@ -172,7 +172,7 @@ if "Login" in st.session_state:
                         c.image(f"{product.get_url()}", width=200)
                     except:
                         c.image("https://www.thesslstore.com/blog/wp-content/uploads/2018/10/bigstock-Error-Browser-Vector-Icon-Fil-242176321-e1540917868244-300x300.jpg")
-                    c.markdown(f"## R${product.get_price()}")
+                    c.markdown(f"## R${product.get_price():.2f}")
                     quantity1 = c.number_input(label = "", key = 100 * (i+1), format = "%i", step = 1,min_value = 1, max_value = product.get_amount())
                     if product.get_amount() > 0 and product.get_amount() - quantity1 >= 0:
                         c.button(label = f"Adicionar {product.get_name()}", key = 200 * (i+12), on_click= st.session_state["Cart"].add_product, args = (product, quantity1))
@@ -187,7 +187,7 @@ if "Login" in st.session_state:
                         c.image(f"{product.get_url()}",width=200)
                     except:
                         c.image("https://www.thesslstore.com/blog/wp-content/uploads/2018/10/bigstock-Error-Browser-Vector-Icon-Fil-242176321-e1540917868244-300x300.jpg")
-                    c.markdown(f"## R${product.get_price()}")
+                    c.markdown(f"## R${product.get_price():.2f}")
                     quantity2 = c.number_input(label = "",  format = "%i", key = 300 * (i+83), step = 1,min_value = 1, max_value = product.get_amount())
                     if product.get_amount() > 0 and product.get_amount() - quantity2 >= 0:    
                         c.button(label = f"Adicionar {product.get_name()}", key = 400 * (i+99), on_click= st.session_state["Cart"].add_product, args = (product, quantity2))
@@ -227,7 +227,7 @@ if "Login" in st.session_state:
 
                 c = st.container()
                 for i in range(len(product_names)):
-                    c.markdown(f"#### R${product_prices[i]}")
+                    c.markdown(f"#### R${product_prices[i]:.2f}")
 
             with col3:
                 
@@ -238,7 +238,7 @@ if "Login" in st.session_state:
             st.markdown("***")
             valor_total = st.session_state["Cart"].get_total_price()
             
-            st.markdown(f"## Valor total: R${valor_total:.3f} ")
+            st.markdown(f"## Valor total: R${valor_total:.2f} ")
             st.button(label = "Finalizar Pedido", key = 998, on_click= st.session_state["Cart"].clear_cart)
         
         with tab4:
