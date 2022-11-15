@@ -14,9 +14,6 @@ p_controller = ProductController()
 
 st.set_page_config(page_title="Liga Pokemon", page_icon="assets/ligapokemon.png")
 
-with open("src/style.css") as f:
-    st.markdown(f"<style>{f.read()}</style>",unsafe_allow_html= True)
-
 if "Login" not in st.session_state:
     st.session_state["Profile"] = "dados"
     st.session_state["Login"] = "negado"
@@ -107,7 +104,7 @@ with st.sidebar:
 if "Login" in st.session_state:
 
     if st.session_state["Login"] == "aprovado":
-        tab1, tab2, tab3, tab4, tab5 = st.tabs(["🙍‍♂️ | Perfil", "🈹 | Home", "🛒 | Carrinho", "💬 | Cadastrar Produto", "➕ | Alterar Estoque"])
+        tab1, tab2, tab3, tab4, tab5 = st.tabs(["🙍‍♂️ | Perfil", "🈹 | Home", "🛒 | Carrinho", "Cadastrar Produtos", "Alterar Estoque"])
 
         with tab1: 
             st.title("Perfil")
@@ -126,14 +123,16 @@ if "Login" in st.session_state:
             if st.session_state["Profile"] == "change":
 
                 email = st.text_input(
-                    label="Novo Email",
+                    label="Email",
                     key = 10000,
+                    placeholder="Digite seu novo email"
                 )
 
                 password = st.text_input(
-                    label="Nova Senha",
+                    label="Senha",
                     type = "password",
                     key = 323,
+                    placeholder="Digite sua nova senha"
                 )
 
                 col3, col4 = st.columns(2)
@@ -222,7 +221,7 @@ if "Login" in st.session_state:
                         
                         )
                     else:
-                        container.markdown("## Produto indisponivel")
+                        container.markdown("Produto indisponivel")
 
         with tab3:
 
@@ -277,21 +276,26 @@ if "Login" in st.session_state:
             
             name1 = st.text_input(
                 label= "Nome",
-                key = 2222
+                key = 2222,
+                placeholder="Digite o nome do produto"
             )
 
             price1 = st.number_input(
                 label="Preço",
+                min_value=0,
                 key = 4444
             )
 
             url1 = st.text_input(
                 label="URL Da Imagem",
-                key = 55555
+                key = 55555,
+                placeholder="Digite o url da imagem do produto"
             )
 
             amount1 = st.number_input(
                 label = "Quantidade",
+                min_value=0,
+                step=1,
                 key = 66666
             )
 
@@ -308,13 +312,16 @@ if "Login" in st.session_state:
             st.title("Editar Produtos")
 
             name2 = st.text_input(
-                label= "Name",
-                    key = 194,
+                label= "Nome",
+                key = 194,
+                placeholder="Digite o nome do produto"
             )
 
             amount2 = st.number_input(
                 label = "Quantidade",
-                    key = 195,
+                min_value=0,
+                step=1,
+                key = 195
             )
 
             st.button(
