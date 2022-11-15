@@ -15,17 +15,17 @@ class UserController():
         self._users = UserDAO.get_instance().get_all()
 
     def check_login(self, email, password):
-        user_dict = {}
+        user_t = {}
         for user in self._users:
             user_email = user.get_email()
             passw = user.get_password()
-            user_dict[user_email] = (passw, [user.get_name(), user.get_cpf()])
+            user_t[user_email] = (passw, [user.get_name(), user.get_cpf()])
 
         try:
-            if user_dict[email][0] == password:
+            if user_t[email][0] == password:
                 st.session_state["Login"] = "aprovado"
-                st.session_state['Usuario'] = user_dict[email][1][0] # Nome
-                st.session_state['Cpf'] = user_dict[email][1][1]     # CPF
+                st.session_state['Usuario'] = user_t[email][1][0] # Nome
+                st.session_state['Cpf'] = user_t[email][1][1]     # CPF
                 st.session_state['Email'] = email                    # Email
                 
             else:
@@ -41,9 +41,9 @@ class UserController():
        
         try:
             UserDAO.get_instance().inserir_user(user)
-            st.markdown("### Registrado")
+            st.markdown("Registrado")
         except:
-            st.markdown("### Email ou cpf já registrados")
+            st.markdown("Email ou cpf já registrados")
 
     def logout():
         st.session_state["Login"] = "negado"
@@ -53,9 +53,9 @@ class UserController():
         user = User(st.session_state['Usuario'], email, password, st.session_state['Cpf'])
         try:
             UserDAO.get_instance().atualizar_user(user)
-            st.markdown("### Alterado com Sucesso")
+            st.markdown("Alterado com Sucesso")
         except:
-            st.markdown("### Email já registrado")
+            st.markdown("Email já registrado")
     
     def change_login_data():
         st.session_state["Profile"] = "change"

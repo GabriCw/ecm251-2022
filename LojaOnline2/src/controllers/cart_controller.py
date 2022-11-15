@@ -22,7 +22,7 @@ class CartController():
                     st.session_state["falta"] = ""
                     
                 else:
-                    st.session_state["falta"] = f"{product.get_name()} tem somente {product.get_amount()} unidade(s) disponível(is) em estoque"
+                    st.session_state["falta"] = f"{product.get_name()} tem {product.get_amount()} unidades em estoque"
                 return
         self.get_cart().get_products().append([product,quantity])
 
