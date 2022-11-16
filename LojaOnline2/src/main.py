@@ -260,7 +260,7 @@ if "Login" in st.session_state:
 
             valor_total = st.session_state["Cart"].get_total_price()
             
-            st.markdown(f"Valor total: R${valor_total:.2f} ")
+            st.title(f"Valor total: R${valor_total:.2f} ")
             st.button(
                 label = "Finalizar Pedido", 
                 key = 998, 
