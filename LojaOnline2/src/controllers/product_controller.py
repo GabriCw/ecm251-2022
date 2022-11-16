@@ -31,13 +31,13 @@ class ProductController:
             time.sleep(0.2)
             st.session_state["Login"] = "aprovado"
     
-    def update_product(self, name, amount):
-        up_product = ProductDAO.get_instance().atualizar_product(name, amount)
-        if up_product == False:
-            st.session_state["carrinho"] = "Falha ao Editar"
-            print(up_product)
-        else:
-            st.session_state["carrinho"] = "Produto Editado Com Sucesso"
-            st.session_state["Login"] = "negado"
-            time.sleep(0.2)
-            st.session_state["Login"] = "aprovado"
+    #def update_product(self, amount, name):
+    #    up_product = ProductDAO.get_instance().atualizar_product(amount, name)
+    #    if up_product == False:
+    #        st.session_state["carrinho"] = "Falha ao Editar"
+    #        print(up_product)
+    #    else:
+    #        st.session_state["carrinho"] = "Produto Editado Com Sucesso"
+    #        st.session_state["Login"] = "negado"
+    #        time.sleep(0.2)
+    #        st.session_state["Login"] = "aprovado"

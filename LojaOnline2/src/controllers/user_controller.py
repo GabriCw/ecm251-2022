@@ -57,7 +57,7 @@ class UserController():
         except:
             st.markdown("Email já registrado")
     
-    def change_login_data():
+    def change_login():
         st.session_state["Profile"] = "change"
 
     def go_back():

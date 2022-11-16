@@ -4,13 +4,13 @@
 ################################
 
 import streamlit as st
-from src.models.cart import Cart
+from models.cart import Cart
 from src.dao.product_dao import ProductDAO
 
 class CartController():
     def __init__(self):
         self._cart = Cart()
-        
+
     def get_cart(self):
         return self._cart
 
@@ -20,9 +20,9 @@ class CartController():
                 if self.get_cart().get_products()[i][1] + quantity <= product.get_amount():
                     self.get_cart().get_products()[i][1] += quantity
                     st.session_state["falta"] = ""
-                    
+
                 else:
-                    st.session_state["falta"] = f"{product.get_name()} tem {product.get_amount()} unidades em estoque"
+                    st.session_state["falta"] = f"{product.get_name()} tem somente {product.get_amount()} unidade(s) disponível(is) em estoque"
                 return
         self.get_cart().get_products().append([product,quantity])
 
@@ -31,7 +31,7 @@ class CartController():
         for items in self.get_cart().get_products():
             total += items[0].get_price() * items[1]
         return total
-    
+
     def clear_cart(self):
         try:
             for item in self.get_cart().get_products():
