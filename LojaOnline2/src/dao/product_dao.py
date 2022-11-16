@@ -63,13 +63,13 @@ class ProductDAO:
         self.cursor.close()
         return product
 
-    def atualizar_product(self, name, amount):
+    def atualizar_product(self, product):
         try:
             self.cursor = self.conn.cursor()
             self.cursor.execute(f"""
                 UPDATE Products SET
-                amount = {amount}
-                WHERE name = '{name}'
+                amount = '{product.get_amount()}'
+                WHERE name = '{product.get_name()}'
             """)
             self.conn.commit()
             self.cursor.close()
